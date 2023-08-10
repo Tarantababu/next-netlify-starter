@@ -46,7 +46,7 @@ export default function Home() {
       const baseWord = baseWords[i].toLowerCase();
       const userWord = userWords[i].toLowerCase();
       
-      if (baseWord !== userWord && userWord !== "") {
+      if (baseWord !== userWord && userWord !== "" && userWord !== "." && userWord !== "," && userWord !== "!" && userWord !== "?" && userWord !== "") {
         mistakes.push(baseWords[i]);
       }
     }
