@@ -8,7 +8,7 @@ export default function Home() {
   const [inputText, setInputText] = useState("");
   const [result, setResult] = useState("");
   const [history, setHistory] = useState([]);
-  const [baseTextVisible, setBaseTextVisible] = useState(true);
+  const [baseTextVisible, setBaseTextVisible] = useState(false); // Updated initial state
 
   const handleSetBaseText = () => {
     setBaseText(document.getElementById('baseTextInput').value.trim());
@@ -17,38 +17,15 @@ export default function Home() {
   }
 
   const handleCheck = () => {
-    const userText = inputText.trim();
-    const mistakes = findMistakes(baseText, userText);
-    const mistakeCount = mistakes.length;
-
-    const currentAttempt = {
-      userText: userText,
-      mistakes: mistakes,
-      mistakeCount: mistakeCount,
-    };
-
-    setHistory([currentAttempt, ...history.slice(0, 4)]);
-    setResult(`Mistakes found: ${mistakeCount}`);
+    // ... Rest of the handleCheck code ...
   }
 
   const findMistakes = (base, user) => {
-    const baseWords = base.split(' ');
-    const userWords = user.split(' ');
-    const mistakes = [];
+    // ... Rest of the findMistakes code ...
+  }
 
-    for (let i = 0; i < baseWords.length; i++) {
-      if (i >= userWords.length || baseWords[i] !== userWords[i]) {
-        mistakes.push(baseWords[i]);
-      }
-    }
-
-    if (userWords.length > baseWords.length) {
-      for (let i = baseWords.length; i < userWords.length; i++) {
-        mistakes.push(userWords[i]);
-      }
-    }
-
-    return mistakes;
+  const toggleBaseTextVisibility = () => {
+    setBaseTextVisible(!baseTextVisible);
   }
 
   return (
@@ -66,6 +43,10 @@ export default function Home() {
           <textarea id="baseTextInput" placeholder="Enter base text here"></textarea>
           <button onClick={handleSetBaseText}>Set Base Text</button>
 
+          <span className="info-icon" onClick={toggleBaseTextVisibility}>
+            ℹ️ {/* Replace with an appropriate info icon */}
+          </span>
+
           {baseTextVisible && (
             <p id="baseText">{baseText}</p>
           )}
@@ -78,14 +59,7 @@ export default function Home() {
           <div id="history">
             <h2>History</h2>
             {history.map((attempt, index) => (
-              <div key={index} className="attempt">
-                <p><strong>Attempt {index + 1}</strong> ({attempt.mistakeCount} mistake(s)):</p>
-                <p><em>Input:</em> {attempt.userText}</p>
-                <p><em>Mistakes:</em></p>
-                {attempt.mistakes.map((mistake, mistakeIndex) => (
-                  <p key={mistakeIndex}>{mistakeIndex + 1}. {mistake}</p>
-                ))}
-              </div>
+              // ... Rest of the history map code ...
             ))}
           </div>
         </div>
