@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import Header from '@components/Header';
-import Footer from '@components/Footer';
+import Head from 'next/head'
+import Header from '@components/Header'
+import Footer from '@components/Footer'
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import styles from './Home.module.css'; // Import your CSS module
@@ -19,11 +19,42 @@ export default function Home() {
   }
 
   const handleCheck = () => {
-    // ... Rest of the handleCheck code ...
+    const userText = inputText.trim();
+    const mistakes = findMistakes(baseText, userText);
+    const mistakeCount = mistakes.length;
+
+    const currentAttempt = {
+      userText: userText,
+      mistakes: mistakes,
+      mistakeCount: mistakeCount,
+    };
+
+    setHistory([currentAttempt, ...history.slice(0, 4)]);
+    setResult(`Mistakes found: ${mistakeCount}`);
   }
 
   const findMistakes = (base, user) => {
-    // ... Rest of the findMistakes code ...
+    const baseWords = base.split(/\s+/);
+    const userWords = user.split(/\s+/);
+    const mistakes = [];
+
+    for (let i = 0; i < baseWords.length; i++) {
+      if (i >= userWords.length || baseWords[i] !== userWords[i]) {
+        if (baseWords[i] !== userWords[i] && userWords[i] !== "") {
+          mistakes.push(baseWords[i]);
+        }
+      }
+    }
+
+    if (userWords.length > baseWords.length) {
+      for (let i = baseWords.length; i < userWords.length; i++) {
+        if (userWords[i] !== "") {
+          mistakes.push(userWords[i]);
+        }
+      }
+    }
+
+    return mistakes;
   }
 
   const toggleBaseTextVisibility = () => {
@@ -47,7 +78,7 @@ export default function Home() {
             <button onClick={handleSetBaseText} className="btn btn-primary mb-3">Set Base Text</button>
 
             <span className={styles['info-icon']} onClick={toggleBaseTextVisibility}>
-              ℹ️ {/* Replace with an appropriate info icon */}
+              <i className="fas fa-info-circle"></i>
             </span>
 
             {baseTextVisible && (
