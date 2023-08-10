@@ -7,7 +7,7 @@
 }
 
 .info-icon::before {
-  content: "ℹ️"; /* Replace with an appropriate info icon */
+  content: "Show"; /* Replace with an appropriate info icon */
 }
 
 /* Additional styling for the app's sections */
