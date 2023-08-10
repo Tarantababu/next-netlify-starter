@@ -1,40 +1,90 @@
 /* Home.module.css */
 
-/* Styles for the info icon */
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container Styles */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Heading Styles */
+h1, h2 {
+  font-weight: bold;
+}
+
+/* Base Text Section */
+.base-text {
+  margin-bottom: 20px;
+}
+
+.base-text textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.base-text button {
+  margin-top: 10px;
+}
+
+/* Dictation Section */
+.dictation {
+  margin-bottom: 40px;
+}
+
+.dictation textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.dictation button {
+  margin-top: 10px;
+}
+
+/* Result Section */
+.result {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* History Section */
+.history {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.history h2 {
+  margin-top: 20px;
+}
+
+/* Info Icon */
 .info-icon {
   cursor: pointer;
   margin-left: 5px;
 }
 
 .info-icon::before {
-  content: "ℹ️"; /* Replace with an appropriate info icon */
+  content: "ℹ️";
 }
 
-/* Additional styling for the app's sections */
-.container {
-  padding: 20px;
-}
+/* Media Queries for Mobile Devices */
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 10px;
+  }
 
-/* Style for the base text and dictation sections */
-.row {
-  margin-top: 20px;
-}
-
-.col-md-6 {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin: 10px;
-  background-color: #f5f5f5;
-}
-
-.col-md-6 h2 {
-  margin-bottom: 15px;
-}
-
-.form-control {
-  margin-bottom: 10px;
-}
-
-.btn {
-  margin-right: 10px;
+  .dictation button {
+    margin-top: 20px;
+  }
 }
