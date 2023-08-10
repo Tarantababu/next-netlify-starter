@@ -34,8 +34,8 @@ export default function Home() {
   }
 
   const findMistakes = (base, user) => {
-    const baseWords = base.split(/\s+/);
-    const userWords = user.split(/\s+/);
+    const baseWords = base.split(/\s+/).filter(word => word !== ""); // Split by whitespace and filter empty strings
+    const userWords = user.split(/\s+/).filter(word => word !== ""); // Split by whitespace and filter empty strings
     const mistakes = [];
 
     for (let i = 0; i < baseWords.length; i++) {
@@ -46,7 +46,7 @@ export default function Home() {
       const baseWord = baseWords[i].toLowerCase();
       const userWord = userWords[i].toLowerCase();
       
-      if (baseWord !== userWord && userWord !== "" && userWord !== "." && userWord !== "," && userWord !== "!" && userWord !== "?" && userWord !== "") {
+      if (baseWord !== userWord && userWord !== "." && userWord !== "," && userWord !== "!" && userWord !== "?") {
         mistakes.push(baseWords[i]);
       }
     }
