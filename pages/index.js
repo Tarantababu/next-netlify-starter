@@ -20,17 +20,26 @@ export default function Home() {
 
   const handleCheck = () => {
     const userText = inputText.trim();
-    const mistakes = findMistakes(baseText, userText);
-    const mistakeCount = mistakes.length;
+    const mistakesIndexes = findMistakes(baseText, userText);
+    const mistakeCount = mistakesIndexes.length;
 
     const currentAttempt = {
       userText: userText,
-      mistakes: mistakes,
-      mistakeCount: mistakeCount,
+      mistakes: mistakeCount,
     };
 
     setHistory([currentAttempt, ...history.slice(0, 4)]);
     setResult(`Mistakes found: ${mistakeCount}`);
+
+    const inputElements = document.querySelectorAll('#inputTextContainer input');
+
+    inputElements.forEach((input, index) => {
+      if (mistakesIndexes.includes(index)) {
+        input.classList.add(styles['input-error']);
+      } else {
+        input.classList.remove(styles['input-error']);
+      }
+    });
   }
 
   const findMistakes = (base, user) => {
@@ -43,7 +52,7 @@ export default function Home() {
 
     while (i < baseWords.length && j < userWords.length) {
       if (baseWords[i].toLowerCase() !== userWords[j].toLowerCase()) {
-        mistakes.push(baseWords[i]);
+        mistakes.push(i); // Store the index of the mistake
         i++;
       } else {
         i++;
@@ -52,7 +61,7 @@ export default function Home() {
     }
 
     while (i < baseWords.length) {
-      mistakes.push(baseWords[i]);
+      mistakes.push(i); // Store the index of the mistake
       i++;
     }
 
@@ -89,8 +98,10 @@ export default function Home() {
           </div>
           <div className="col-md-6">
             <h2>Dictation</h2>
-            <textarea id="inputText" className="form-control mb-2" placeholder="Type your dictation here" onChange={e => setInputText(e.target.value)}></textarea>
-            <button onClick={handleCheck} className="btn btn-success mb-3">Check</button>
+            <div id="inputTextContainer">
+              <textarea id="inputText" className={`form-control mb-2 ${styles['input-text']}`} placeholder="Type your dictation here" onChange={e => setInputText(e.target.value)}></textarea>
+              <button onClick={handleCheck} className="btn btn-success mb-3">Check</button>
+            </div>
 
             <div id="result" className="mb-3">{result}</div>
             <div id="history">
