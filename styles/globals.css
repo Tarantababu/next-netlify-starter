@@ -1,47 +1,6 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f2f2f2;
-}
-
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-  text-align: center;
-}
-
-textarea {
-  width: 100%;
-  height: 150px;
-  margin-top: 10px;
-  padding: 10px;
-}
-
-button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
 /* Home.module.css */
 
+/* Styles for the info icon */
 .info-icon {
   cursor: pointer;
   margin-left: 5px;
@@ -51,3 +10,31 @@ button:hover {
   content: "ℹ️"; /* Replace with an appropriate info icon */
 }
 
+/* Additional styling for the app's sections */
+.container {
+  padding: 20px;
+}
+
+/* Style for the base text and dictation sections */
+.row {
+  margin-top: 20px;
+}
+
+.col-md-6 {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  background-color: #f5f5f5;
+}
+
+.col-md-6 h2 {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-right: 10px;
+}
