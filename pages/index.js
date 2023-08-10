@@ -2,13 +2,14 @@ import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 import React, { useState } from 'react';
+import styles from './Home.module.css'; // Import your CSS module
 
 export default function Home() {
   const [baseText, setBaseText] = useState("This is your base text");
   const [inputText, setInputText] = useState("");
   const [result, setResult] = useState("");
   const [history, setHistory] = useState([]);
-  const [baseTextVisible, setBaseTextVisible] = useState(false); // Updated initial state
+  const [baseTextVisible, setBaseTextVisible] = useState(false);
 
   const handleSetBaseText = () => {
     setBaseText(document.getElementById('baseTextInput').value.trim());
@@ -43,8 +44,8 @@ export default function Home() {
           <textarea id="baseTextInput" placeholder="Enter base text here"></textarea>
           <button onClick={handleSetBaseText}>Set Base Text</button>
 
-          <span className="info-icon" onClick={toggleBaseTextVisibility}>
-            Show the Base Text {/* Replace with an appropriate info icon */}
+          <span className={styles['info-icon']} onClick={toggleBaseTextVisibility}>
+            ℹ️ {/* Replace with an appropriate info icon */}
           </span>
 
           {baseTextVisible && (
