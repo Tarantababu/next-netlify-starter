@@ -39,18 +39,15 @@ export default function Home() {
     const mistakes = [];
 
     for (let i = 0; i < baseWords.length; i++) {
-      if (i >= userWords.length || baseWords[i] !== userWords[i]) {
-        if (baseWords[i] !== userWords[i] && userWords[i] !== "") {
-          mistakes.push(baseWords[i]);
-        }
+      if (i >= userWords.length) {
+        break; // Stop checking if user's text is shorter
       }
-    }
 
-    if (userWords.length > baseWords.length) {
-      for (let i = baseWords.length; i < userWords.length; i++) {
-        if (userWords[i] !== "") {
-          mistakes.push(userWords[i]);
-        }
+      const baseWord = baseWords[i].toLowerCase();
+      const userWord = userWords[i].toLowerCase();
+      
+      if (baseWord !== userWord && userWord !== "") {
+        mistakes.push(baseWords[i]);
       }
     }
 
