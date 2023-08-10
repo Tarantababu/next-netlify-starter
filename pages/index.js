@@ -38,17 +38,22 @@ export default function Home() {
     const userWords = user.split(/\s+/).filter(word => word !== ""); // Split by whitespace and filter empty strings
     const mistakes = [];
 
-    for (let i = 0; i < baseWords.length; i++) {
-      if (i >= userWords.length) {
-        break; // Stop checking if user's text is shorter
-      }
+    let i = 0;
+    let j = 0;
 
-      const baseWord = baseWords[i].toLowerCase();
-      const userWord = userWords[i].toLowerCase();
-      
-      if (baseWord !== userWord && userWord !== "." && userWord !== "," && userWord !== "!" && userWord !== "?") {
+    while (i < baseWords.length && j < userWords.length) {
+      if (baseWords[i].toLowerCase() !== userWords[j].toLowerCase()) {
         mistakes.push(baseWords[i]);
+        i++;
+      } else {
+        i++;
+        j++;
       }
+    }
+
+    while (i < baseWords.length) {
+      mistakes.push(baseWords[i]);
+      i++;
     }
 
     return mistakes;
