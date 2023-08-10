@@ -44,7 +44,7 @@ export default function Home() {
           <button onClick={handleSetBaseText}>Set Base Text</button>
 
           <span className="info-icon" onClick={toggleBaseTextVisibility}>
-            ℹ️ {/* Replace with an appropriate info icon */}
+            Show the Base Text {/* Replace with an appropriate info icon */}
           </span>
 
           {baseTextVisible && (
