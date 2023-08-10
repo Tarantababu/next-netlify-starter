@@ -39,3 +39,15 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+/* Home.module.css */
+
+.info-icon {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.info-icon::before {
+  content: "ℹ️"; /* Replace with an appropriate info icon */
+}
+
