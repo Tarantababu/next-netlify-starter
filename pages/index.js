@@ -8,10 +8,12 @@ export default function Home() {
   const [inputText, setInputText] = useState("");
   const [result, setResult] = useState("");
   const [history, setHistory] = useState([]);
+  const [baseTextVisible, setBaseTextVisible] = useState(true);
 
   const handleSetBaseText = () => {
     setBaseText(document.getElementById('baseTextInput').value.trim());
     document.getElementById('baseTextInput').value = '';
+    setBaseTextVisible(false);
   }
 
   const handleCheck = () => {
@@ -64,7 +66,9 @@ export default function Home() {
           <textarea id="baseTextInput" placeholder="Enter base text here"></textarea>
           <button onClick={handleSetBaseText}>Set Base Text</button>
 
-          <p id="baseText">{baseText}</p>
+          {baseTextVisible && (
+            <p id="baseText">{baseText}</p>
+          )}
 
           <p>Dictate the text:</p>
           <textarea id="inputText" placeholder="Type your dictation here" onChange={e => setInputText(e.target.value)}></textarea>
